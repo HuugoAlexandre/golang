@@ -6,6 +6,35 @@ import (
 	"fmt"
 )
 
+// STRUCT
+type Endereco struct {
+	logradouro string
+	numero int
+	cidade string
+	estado string
+}
+
+type Carteirinha struct {
+	id int
+	time string
+	anoDeEntrada int
+}
+
+type Cliente struct {
+	nome string
+	idade int
+	ativo bool
+	// Composição anônima em Struct
+	Endereco
+	// Composição nomeada
+	carteira Carteirinha
+}
+
+func (c *Cliente) desativar() {
+	c.ativo = false
+	fmt.Printf("\nO clinte %s foi desativado.", c.nome)
+}
+
 func main() {
 
 	// ARRAYS
@@ -76,39 +105,17 @@ func main() {
 
 	fmt.Println(totalMultiplicado)
 
-	// STRUCT
-	type Endereco struct {
-		logradouro string
-		numero int
-		cidade string
-		estado string
-	}
-
-	type Carteirinha struct {
-		id int
-		time string
-		anoDeEntrada int
-	}
-
-	type Cliente struct {
-		nome string
-		idade int
-		ativo bool
-		// Composição anônima em Struct
-		Endereco
-		// Composição nomeada
-		carteira Carteirinha
-	}
-
 	hugo := Cliente {
 		nome: "Hugo",
 		idade: 21,
-		ativo: false,
+		ativo: true,
 	}
 	fmt.Printf("Nome: %s, idade: %d, ativo: %t", hugo.nome, hugo.idade, hugo.ativo)
 	hugo.ativo = true
 	hugo.cidade = "roteiro" // mesma coisa que hugo.Endereco.cidade = "roteiro"
 	hugo.carteira.time = "Corinthians" // composição nomeada precisa incluir o campo da struct
+	fmt.Printf("\nNome: %s, idade: %d, ativo: %t, cidade: %s, time: %s", hugo.nome, hugo.idade, hugo.ativo, hugo.cidade, hugo.carteira.time)
+	hugo.desativar()
 	fmt.Printf("\nNome: %s, idade: %d, ativo: %t, cidade: %s, time: %s", hugo.nome, hugo.idade, hugo.ativo, hugo.cidade, hugo.carteira.time)
 }
 

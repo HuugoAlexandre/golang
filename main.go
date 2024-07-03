@@ -77,10 +77,27 @@ func main() {
 	fmt.Println(totalMultiplicado)
 
 	// STRUCT
+	type Endereco struct {
+		logradouro string
+		numero int
+		cidade string
+		estado string
+	}
+
+	type Carteirinha struct {
+		id int
+		time string
+		anoDeEntrada int
+	}
+
 	type Cliente struct {
 		nome string
 		idade int
 		ativo bool
+		// Composição anônima em Struct
+		Endereco
+		// Composição nomeada
+		carteira Carteirinha
 	}
 
 	hugo := Cliente {
@@ -90,7 +107,9 @@ func main() {
 	}
 	fmt.Printf("Nome: %s, idade: %d, ativo: %t", hugo.nome, hugo.idade, hugo.ativo)
 	hugo.ativo = true
-	fmt.Printf("\nNome: %s, idade: %d, ativo: %t", hugo.nome, hugo.idade, hugo.ativo)
+	hugo.cidade = "roteiro" // mesma coisa que hugo.Endereco.cidade = "roteiro"
+	hugo.carteira.time = "Corinthians" // composição nomeada precisa incluir o campo da struct
+	fmt.Printf("\nNome: %s, idade: %d, ativo: %t, cidade: %s, time: %s", hugo.nome, hugo.idade, hugo.ativo, hugo.cidade, hugo.carteira.time)
 }
 
 // FUNÇÕES

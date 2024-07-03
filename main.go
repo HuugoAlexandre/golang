@@ -35,6 +35,26 @@ func (c *Cliente) desativar() {
 	fmt.Printf("\nO clinte %s foi desativado.", c.nome)
 }
 
+func (c *Cliente) ativar() {
+	c.ativo = true
+	fmt.Printf("\nO clinte %s foi ativado.", c.nome)
+}
+
+// INTERFACE
+type Pessoa interface {
+	ativar()
+}
+
+type Empresa struct {
+	nome string
+}
+
+func (e Empresa) ativar() {}
+
+func ativacao(pessoa Pessoa) {
+	pessoa.ativar()
+}
+
 func main() {
 
 	// ARRAYS
@@ -110,13 +130,16 @@ func main() {
 		idade: 21,
 		ativo: true,
 	}
-	fmt.Printf("Nome: %s, idade: %d, ativo: %t", hugo.nome, hugo.idade, hugo.ativo)
-	hugo.ativo = true
 	hugo.cidade = "roteiro" // mesma coisa que hugo.Endereco.cidade = "roteiro"
 	hugo.carteira.time = "Corinthians" // composição nomeada precisa incluir o campo da struct
 	fmt.Printf("\nNome: %s, idade: %d, ativo: %t, cidade: %s, time: %s", hugo.nome, hugo.idade, hugo.ativo, hugo.cidade, hugo.carteira.time)
 	hugo.desativar()
 	fmt.Printf("\nNome: %s, idade: %d, ativo: %t, cidade: %s, time: %s", hugo.nome, hugo.idade, hugo.ativo, hugo.cidade, hugo.carteira.time)
+	ativacao(&hugo)
+	fmt.Printf("\nNome: %s, idade: %d, ativo: %t, cidade: %s, time: %s", hugo.nome, hugo.idade, hugo.ativo, hugo.cidade, hugo.carteira.time)
+	minhaEmpresa := Empresa{}
+	// aceita porque Empresa implementa a função ativar
+	ativacao(minhaEmpresa)
 }
 
 // FUNÇÕES

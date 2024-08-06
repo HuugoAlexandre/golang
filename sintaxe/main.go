@@ -80,5 +80,22 @@ func main() {
 	fmt.Printf("\nNome: %s, idade: %d, ativo: %t, cidade: %s, time: %s", hugo.nome, hugo.idade, hugo.ativo, hugo.cidade, hugo.carteira.time)
 	minhaEmpresa := Empresa{}
 	ativacao(minhaEmpresa)
+	fmt.Println()
+	// POINTERS
+	valorA := 5
+	valorB := 6
+	resultadoMulti := multi(&valorA,&valorB)
+	fmt.Println(resultadoMulti)
+	fmt.Println(valorA, valorB)
+
+	// Exemplos de uso de ponteiro com struct
+	hugoConta := Conta{saldo: 500}
+	hugoConta.deposita(200)
+	fmt.Println(hugoConta.saldo)
+
+	hugoNovaConta := novaConta()
+	fmt.Println(hugoNovaConta.saldo)
+	hugoNovaConta.deposita(300)
+	fmt.Println(hugoNovaConta.saldo)
 }
 

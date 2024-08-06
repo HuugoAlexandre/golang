@@ -97,5 +97,16 @@ func main() {
 	fmt.Println(hugoNovaConta.saldo)
 	hugoNovaConta.deposita(300)
 	fmt.Println(hugoNovaConta.saldo)
+
+	// type assertion
+	var minhaVar interface{} = 12 // interface vazia
+	fmt.Println(minhaVar)
+	res, ok := minhaVar.(int)
+	if ok {
+		fmt.Printf("minhaVar é inteiro: %v", res)
+	} else {
+		fmt.Printf("minhaVar NÃO é inteiro: %v", res)
+	}
+	
 }
 

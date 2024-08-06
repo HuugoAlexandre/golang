@@ -108,5 +108,17 @@ func main() {
 		fmt.Printf("minhaVar NÃO é inteiro: %v", res)
 	}
 	
+	// Generics
+	fmt.Println()
+	mapa := map[string]int {"hugo": 21, "luan": 20, "arthur": 19}
+	mapa2 := map[string]float64 {"hugo": 21.5, "luan": 20.5, "arthur": 19.5}
+	// coloca ~ para indicar que meuNumero é um tipo genérico que é do tipo int explicitamente
+	mapa3 := map[string]meuNumero {"hugo": 21, "luan": 20, "arthur": 19}
+	fmt.Println(somaMapa(mapa))
+	fmt.Println(somaMapa2(mapa2))
+	fmt.Println(somaMapa2(mapa3)) 
+
+	// constraint comparable
+	fmt.Println(comparar(5, 5.0))
 }
 

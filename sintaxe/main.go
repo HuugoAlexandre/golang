@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"teste/sintaxe/formula1"
 )
 
 func main() {
@@ -120,5 +121,14 @@ func main() {
 
 	// constraint comparable
 	fmt.Println(comparar(5, 5.0))
+
+	// Teste do uso de go.mod
+	multiPackage := formula1.Multi(5, 7)
+	fmt.Println(multiPackage)
+	
+	// cor está em letra minúscula em sua definição, não pode ser acessada
+	lewis := formula1.Montadora{Nome: "Mercedes"}
+	fmt.Println(lewis.Nome)
+
 }
 

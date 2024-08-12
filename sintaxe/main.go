@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"teste/sintaxe/formula1"
+	"github.com/google/uuid"
 )
 
 func main() {
@@ -130,5 +131,8 @@ func main() {
 	lewis := formula1.Montadora{Nome: "Mercedes"}
 	fmt.Println(lewis.Nome)
 
+	// Teste de go mod tidy
+	id := uuid.New()
+	fmt.Println(id)
 }
 
